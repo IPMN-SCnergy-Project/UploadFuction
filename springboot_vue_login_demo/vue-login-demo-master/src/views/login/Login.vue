@@ -91,17 +91,35 @@ export default {
               password: _this.ruleForm.password,
             },
           }).then((res) => { // 当收到后端的响应时执行该括号内的代码，res 为响应信息，也就是后端返回的信息
-            if (res.data.code === "0") {  // 当响应的编码为 0 时，说明登录成功
+            if (res.data.code === "0" && res.data.data.user.status===1) {  // 当响应的编码为 0 时，说明登录成功
               // 将用户信息存储到sessionStorage中
-              sessionStorage.setItem("userInfo", JSON.stringify(res.data.data));
+              sessionStorage.setItem("userInfo", JSON.stringify(res.data.data.user));
+              console.log("passed data:",JSON.stringify(res.data.data))
               // 跳转页面到首页
-              this.$router.push('/home');
+              this.$router.push({
+              path: '/home',
+              query: { myList: JSON.stringify(res.data.data) },
+            });
               // 显示后端响应的成功信息
               this.$message({
                 message: res.data.msg,
                 type: "success",
               });
-            } else {  // 当响应的编码不为 0 时，说明登录失败
+            } 
+            else if (res.data.code === "0" && res.data.data.user.status===2) {  // 当响应的编码为 0 时，说明登录成功
+              // 将用户信息存储到sessionStorage中
+              sessionStorage.setItem("userInfo", JSON.stringify(res.data.data.user));
+              // 跳转页面到首页
+              this.$router.push({
+              path: '/home-stackholder',
+              query: { myList: JSON.stringify(res.data.data) },
+            });
+              // 显示后端响应的成功信息
+              this.$message({
+                  message: res.data.msg,
+                  type: "success",
+                });
+            }else {  // 当响应的编码不为 0 时，说明登录失败
               // 显示后端响应的失败信息
               this.$message({
                 message: res.data.msg,

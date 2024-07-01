@@ -8,20 +8,20 @@
         :rules="rules"
         ref="ruleForm"
         label-position="left"
-        label-width="80px"
+        label-width="140px"
         class="demo-ruleForm"
       >
-        <el-form-item label="User Name" prop="uname">
+        <el-form-item label="User Name" prop="uname" class="Username">
           <el-input v-model="ruleForm.uname"></el-input>
         </el-form-item>
-        <el-form-item label="Password" prop="pass">
+        <el-form-item label="Password" prop="pass" class="Password">
           <el-input
             type="password"
             v-model="ruleForm.pass"
             autocomplete="off"
           ></el-input>
         </el-form-item>
-        <el-form-item label="Confirm Password" prop="password">
+        <el-form-item label="Confirm Password" prop="password" class="Confirm-Password">
           <el-input
             type="password"
             v-model="ruleForm.password"
@@ -135,10 +135,24 @@ export default {
 /* 设置登录面板居中，宽度为400px */
 .box-card {
   margin: auto auto;
-  width: 400px;
+  width: 500px;
 }
 /* 设置登录面板中的表单居中 */
 .login-from {
   margin: auto auto;
 }
+
+.Username {
+  white-space: nowrap; /* 禁用自动换行 */
+}
+
+.Password {
+  white-space: nowrap; /* 禁用自动换行 */
+}
+
+.Confirm-Password {
+  white-space: nowrap; /* 禁用自动换行 */
+}
+
+
 </style>

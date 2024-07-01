@@ -1,5 +1,7 @@
 package com.springboot.springbootlogindemo.service;
+import java.util.List;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.springboot.springbootlogindemo.domain.User;
 
 public interface UserService {
@@ -17,4 +19,6 @@ public interface UserService {
      * @return
      */
     User registService(User user);
+
+    JsonNode getUserFileList(long userId);
 }

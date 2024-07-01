@@ -17,6 +17,10 @@ public class User {
     // 密码属性varchar对应String
     private String password;
 
+    private int status;
+
+    private String department;
+
     public long getUid() {
         return uid;
     }
@@ -40,4 +44,12 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public String getDepartment() { return department; }
+
+    public void setDepartment(String department) { this.department = department; }
+
+    public int getStatus() { return status; }
+
+    public void setStatus(int status) { this.status = status; }
 }
